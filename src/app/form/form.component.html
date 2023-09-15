@@ -1,0 +1,110 @@
+<div class="" >
+
+    <h1 class="">Formulario de Inscripcion Al Curso</h1>
+    
+    <form class="" [formGroup]="recordForm" (ngSubmit)="onSubmit()"  >
+  
+        <div class="" >
+            <div class="">
+  
+                <label for="firstName" class="">Nombre<span class="">*</span></label>
+                <input type="text" placeholder="Nombre" formControlName="firstName"
+  
+                [class.valid]="firstName.valid && firstName.dirty || firstName.touched" 
+                [class.invalid]="firstName.invalid && firstName.dirty || firstName.touched">
+  
+                <span class="" *ngIf="firstName?.invalid && firstName?.touched && 
+                firstName?.hasError('required')">campo obligatorio</span>
+                
+                <span class="" *ngIf="firstName?.touched && firstName?.errors?.['minlength']">
+                Debe ingresar un minimo {{firstName?.errors?.['minlength'].requiredLength}} caracteres</span>
+                
+                <span class="" *ngIf="firstName?.invalid && firstName?.touched && 
+                            firstName?.hasError('pattern')">Solo puede ingresar letras</span>   
+            </div>
+            
+            
+            
+            <div class="">
+    
+                <label for="lastName" class="">Apellido<span class="">*</span></label>
+                <input type="text" placeholder="Apellido" formControlName="lastName"
+                [class.valid]="lastName.valid && lastName.dirty || lastName.touched" 
+                [class.invalid]="lastName.invalid && lastName.dirty || lastName.touched">
+                <span class="" *ngIf="lastName?.invalid && lastName?.touched && lastName?.hasError('required')">campo obligatorio</span>
+                <span class="" *ngIf="lastName?.touched && lastName?.errors?.['minlength']">
+                    Debe ingresar un minimo {{lastName?.errors?.['minlength'].requiredLength}} caracteres</span>
+            </div>
+            <div class="">
+    
+                <label for="idCard" class="">DNI<span class="">*</span></label>
+                <input type="number" placeholder="99999999" formControlName="idCard" 
+                [class.valid]="lastName.valid && lastName.dirty || lastName.touched" 
+                [class.invalid]="lastName.invalid && lastName.dirty || lastName.touched">
+                <span class="" *ngIf="idCard?.hasError('pattern')">El campo debe contener 8 caracteres</span>
+                <span class="" *ngIf="idCard?.invalid && idCard?.touched && idCard?.hasError('required')">campo obligatorio</span>                
+            </div>
+        </div>
+  
+        <div class="">
+            <div class="">
+    
+                <label for="email" class="">Email<span class="">*</span></label>
+                <input type="email"  placeholder="ejemplo@gmail.com" formControlName="email"
+                [class.valid]="email.valid && email.dirty || email.touched" 
+                [class.invalid]="email.invalid && email.dirty || email.touched">
+                <span class="" *ngIf="email?.invalid && email?.touched && email?.hasError('required')">campo obligatorio</span>
+                <span class="" *ngIf="email.hasError('invalidDomain')">Dominio de correo inválido</span>
+                
+            </div>
+            <div class="">
+  
+                <label for="phone" class="">Telefono<span class="">*</span></label>
+                <input type="text"  placeholder="(+xx) x xxx xxx-xxxx" formControlName="phone"
+                [class.valid]="phone.valid && phone.dirty || phone.touched" 
+                [class.invalid]="phone.invalid && phone.dirty || phone.touched">
+                <span class="" *ngIf="phone?.touched && phone?.hasError('required')">campo obligatorio</span>
+                <span class="" *ngIf="phone?.dirty && phone?.hasError('invalidPhone')">Debe ingresar solo numeros 
+                    <br> formato valido (54) 9 371 351-4576</span>
+  
+            </div>
+            <div class="">
+  
+                <label for="birthdate" class="">Fecha de Nacimiento<span class="">*</span></label>
+                <input class="" type="date" formControlName="date"
+                [class.valid]="date.valid && date.dirty || date.touched" 
+                [class.invalid]="date.invalid && date.dirty || date.touched">
+                <span class="" *ngIf="date?.touched && date?.hasError('required')">campo obligatorio</span>
+            </div>
+        </div>
+  
+        <div class="">
+            <div class="">
+                <p class="">Curso elegido: </p>
+                <p class=""></p>
+            </div>
+            <div class="">
+                <label for="birthdate" class="">Horario<span class="">*</span></label>
+    
+                <select class="" formControlName="schedule"
+                [class.valid]="schedule.valid && schedule.dirty || schedule.touched" 
+                [class.invalid]="schedule.invalid && schedule.dirty || schedule.touched">
+                    <option class="" value="" selected>Seleccione el Horario</option>
+                    <option value="manana">Mañana</option>
+                    <option value="tarde">Tarde</option>
+                </select>
+                <span class=""  *ngIf="schedule?.touched && schedule?.hasError('required')">
+                    campo obligatorio</span>
+            </div>
+        </div>
+        
+        <div class="">
+            <a routerLink="/" pButton label="Cancelar" type="submit" class=""></a>
+            <button 
+            type="submit" class="" >Siguiente</button>
+           
+        </div>
+  
+    </form>
+    
+  </div>
